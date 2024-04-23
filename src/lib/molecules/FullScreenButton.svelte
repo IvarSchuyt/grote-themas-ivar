@@ -33,14 +33,14 @@
 
   function updateButtonText() {
     // Update de knoptekst op basis van de huidige status
-    const buttonText = document.querySelector('.inner-text');
+    const buttonText = document.querySelector('.fullscreen-span');
     buttonText.textContent = isFullscreen ? 'verklein scherm' : 'vergroot scherm';
   }
 </script>
   
   <button id="fullScreen">
     {#if isFullscreen}
-      <figure>
+      <div class="fullscreen-div">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-minimize" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M5 9l4 0l0 -4" />
@@ -52,10 +52,10 @@
             <path d="M19 15l-4 0l0 4" />
             <path d="M15 15l6 6" />
         </svg>
-        <figcaption class="inner-text">verklein scherm</figcaption>
-      </figure>
+        <span class="fullscreen-span">verklein scherm</span>
+      </div>
     {:else}
-      <figure>
+    <div class="fullscreen-div">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-maximize" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 4l4 0l0 4" />
             <path d="M14 10l6 -6" /><path d="M8 20l-4 0l0 -4" />
             <path d="M4 20l6 -6" />
@@ -64,8 +64,8 @@
             <path d="M8 4l-4 0l0 4" />
             <path d="M4 4l6 6" />
         </svg>
-        <figcaption class="inner-text">vergroot scherm</figcaption>
-      </figure>
+        <span class="fullscreen-span">vergroot scherm</span>
+      </div>
     {/if}
   </button>
   
@@ -91,7 +91,7 @@ button {
     }
 }
 
-button figure {
+button .fullscreen-div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -100,7 +100,7 @@ button figure {
     margin: 0 var(--unit-micro);
 }
 
-button figure figcaption {
+button .fullscreen-div span {
     visibility: hidden;
     width: 0px;
 }
@@ -137,11 +137,11 @@ button:focus {
         padding-left: var(--unit-small);
     }
 
-    button figure {
+    button .fullscreen-div {
         gap: var(--unit-small);
     }
 
-    button figure figcaption {
+    button .fullscreen-div span {
         visibility: visible;
         width: fit-content;
     }
@@ -153,7 +153,7 @@ button:focus {
       height: 5rem;
     }
 
-    button figure figcaption {
+    button .fullscreen-div span {
       font-size: 150%;   
     }
 }

@@ -7,6 +7,7 @@
   import FileFormField from "$lib/molecules/FileFormField.svelte";
   import Button from "$lib/atoms/Button.svelte";
   import LimitedFormField from "../molecules/LimitedFormField.svelte";
+  import CheckFormField from "$lib/molecules/CheckFormField.svelte";
   import AccessValidator from "../molecules/AccessValidator.svelte";
   import { listValidatorClass } from '$lib/utils/tagstore.js';
 
@@ -19,7 +20,6 @@
   let validatorHidden = true;
 
   data = data.data;
-  console.log(data)
   let tagOptions = data.tag.map((tag) => {
     return {
       id: tag.id,
@@ -68,17 +68,17 @@ function toggleValidator() {
     let removed = false;
 
     for (let i = 0; i < errorStandard.length; i++) {
+      if(errorStandard[i].type != "checkbox"){
       errorStandard[i].setCustomValidity(
         "Vul " + labelStandard[i].innerHTML + " in."
       );
       newValidator.push(errorStandard[i].validationMessage);
       newValidator = newValidator;
-
+      }
 
 
       ["change", "input"].forEach(function (e) {
         errorStandard[i].addEventListener("input", () => {
-          console.log(newValidator);
           if (errorStandard[i].validity.valid == true) {
             // newValidator.pop();
             // newValidator = removeDuplicates(newValidator);
@@ -107,7 +107,6 @@ function toggleValidator() {
         });
       });
     }
-    console.log(listValidator)
 
   });
 </script>
@@ -215,6 +214,27 @@ function toggleValidator() {
       accepted={"video/*"}
       inputHint="Bijv. Een video van de werkvorm."
     />
+        <CheckFormField
+        iconSrc="/images/icons/contact.svg"
+        labelFor="selectTag"
+        labelText="Selecteer relevante tags"
+        inputType="checkbox"
+        checkName="selectTag"
+        checkId="selectTag"
+        isRequired={false}
+        {data}
+      />
+
+    <!-- <SelectFormField
+    iconSrc="/images/icons/school.svg"
+    labelFor="tagSelect"
+    labelText="Tags"
+    selectName="tagSelect"
+    selectId="tagSelect"
+    selectPlaceholder="Selecteer relevante tags..."
+    options={data.sub_tag}
+    isRequired={true}
+  /> -->
   </div>
 
   <Button btnType="submit" {btnText} on:click= {toggleValidator}></Button>

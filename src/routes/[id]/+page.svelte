@@ -91,10 +91,10 @@
 			<div class="tags">
 				<h3>Tags</h3>
 				<div class="tag-list">
-					{#if workform.tags.length > 0}
-						{#each workform.tags as tag}
-							<div class="single-tag" style="border-color: {tag.tag_id.color};">
-								<p>{tag.tag_id.title}</p>
+					{#if workform.sub_tags.length > 0}
+						{#each workform.sub_tags as tag}
+							<div class="single-tag" style="border-color: {tag.sub_tag_id.color};">
+								<p>{tag.sub_tag_id.title}</p>
 							</div>
 						{/each}
 					{:else}

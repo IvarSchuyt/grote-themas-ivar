@@ -9,7 +9,7 @@
 	<section>
 		<!-- Heading -->
 		<header>
-			<h1>Werkvorm uploaden</h1>
+			<h1>Voeg een Kleine Werkvorm voor Grote Thema's toe</h1>
 			<p>
                 Voeg hier jouw werkvorm toe en deel deze met collega's.
 			</p>
@@ -80,7 +80,7 @@
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         header > p {
@@ -94,7 +94,7 @@
         }
 
         header h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
 
         header > p {

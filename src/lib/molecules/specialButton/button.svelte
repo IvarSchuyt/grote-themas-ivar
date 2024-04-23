@@ -15,7 +15,7 @@
 
 <div class="submit-button">
 	<div class="icon-box">
-		<Icon iconSrc="/images/icons/arrow-right.svg" --icon-width="1.4rem"></Icon>
+		<Icon iconSrc="/images/icons/arrow-right.svg"></Icon>
 	</div>
 	<ButtonPrimitive.Root
 	{builders}

@@ -3,11 +3,11 @@
 </script>
 <section>
     <div>
-        <img src="/images/werkvorm-animation.gif" width="300" height="300" alt="animatie van werkvormen icoon" id="animation-image"/>
+        <img src="/images/werkvorm-animation-performant.gif" width="300" height="300" alt="animatie van werkvormen icoon" id="animation-image"/>
         <img src="/images/werkvorm-reduced.svg" width="300" height="300" alt="werkvormen icoon" id="reduced-image" />
     </div>
     <div>
-        <h1>Welkom op het platform Werkvormen Grote Thema's</h1>
+        <h1>Welkom op het platform Kleine werkvormen voor grote thema's</h1>
         <p>Wil jij met jouw studenten werken aan ‘moeilijke’ maatschappelijke vraagstukken?  Vind hier een werkvorm die helpt om grote thema’s bespreekbaar en behapbaar te maken.</p>
     </div>
 </section>

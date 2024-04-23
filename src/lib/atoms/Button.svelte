@@ -55,10 +55,6 @@
 	button:hover {
 		background-color: var(--btn-hover-bg, #362e61);
 	}
-
-	.submit-button:has(button:hover) .icon-box {
-		transform: scale(1.5);
-	}
 	
 	@media (min-width: 170rem) {
         button{

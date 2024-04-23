@@ -1,37 +1,54 @@
 <script>
+	import { onMount } from 'svelte';
+	import IntersectionObserver from "svelte-intersection-observer";
+
 	export let workform
+
+
+	let node;
 </script>
+
 
 <article>
 	<ul>
-		{#if workform.tags.length > 0}
-			{#each workform.tags as tag}
-				<li style="border-color: {tag.tag_id.color};">{tag.tag_id.title}</li>
+		{#if workform.sub_tags.length > 0 && !undefined}
+			{#each workform.sub_tags as tag}
+				<li style="border-color: {tag.sub_tag_id.color};">{tag.sub_tag_id.title}</li>
 			{/each}
 		{:else}
 			<li style="border-color: white">Geen tags</li>
 		{/if}
 	</ul>
 
+	<IntersectionObserver element={node} let:intersecting>
+		<div bind:this={node}>
+		  {#if intersecting}
+
+
 	{#if workform.thumbnail_performant}
 	<img
-		class="thumbnail"
+		class="thumbnail lazy-img"
 		src={'https://platform-big-themes.directus.app/assets/' + workform.thumbnail_performant.id}
 		alt="{workform.alt}"
-		width={workform.thumbnail.width} 
-		height={workform.thumbnail.height}
-		loading="lazy"
 	/>
 	{:else}
 	<img
-	class="thumbnail"
+	class="thumbnail lazy-img"
 	src={'https://platform-big-themes.directus.app/assets/' + workform.thumbnail.id}
 	alt="{workform.alt}"
-	width={workform.thumbnail.width} 
-	height={workform.thumbnail.height}
-	loading="lazy"
 	/>
 	{/if}
+	{:else}
+		<img
+		class="thumbnail lazy-img"
+		src='/images/nnnoise.svg'
+		alt="{workform.alt}"
+		/>
+	{/if}
+
+	
+</div>
+</IntersectionObserver>
 	<div>
 		<div>
 			<h2>{workform.title}</h2>
@@ -57,9 +74,9 @@
 		padding: 0.8rem;
 	}
 
-	article > img {
+	article > div > img {
 		height: 10rem;
-		width: 100%;
+		width: 18.5rem;
 		object-fit: cover;
 		object-position: center;
 		transition: all ease-in-out var(--animation-quick);

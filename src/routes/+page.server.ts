@@ -28,10 +28,12 @@ export async function load(event) {
 	const reqCourse = await fetch('https://platform-big-themes.directus.app/items/course');
 	const reqContact = await fetch('https://platform-big-themes.directus.app/items/contact');
 	const reqTag = await fetch('https://platform-big-themes.directus.app/items/tag');
+	const reqSubtag = await fetch('https://platform-big-themes.directus.app/items/sub_tag');
 	const dataWorkform = await reqWorkform.json();
 	const dataCourse = await reqCourse.json();
 	const dataContact = await reqContact.json();
 	const dataTag = await reqTag.json();
+	const dataSubtag = await reqSubtag.json();
 	const user = event.locals.user;
 
 	const data = {
@@ -39,6 +41,7 @@ export async function load(event) {
 		course: dataCourse.data,
 		contact: dataContact.data,
 		tag: dataTag.data,
+		sub_tag: dataSubtag.data,
 		user: user
 	};
 

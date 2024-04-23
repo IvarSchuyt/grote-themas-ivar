@@ -27,7 +27,6 @@
 	/* ------------------------------- END ATTEMPT ------------------------------ */
 
 	export let data;
-
 	// Zoekbalk logica
 	let searchInput = null;
 
@@ -69,17 +68,19 @@
 	<Nav {data} ></Nav>
 	<NavFilterList {data} {searchInput} />
 	<!-- als selectedtags niet op alletags staat dan wordt er weergeven hoeveel werkvormen er zijn gevonden -->
-	<section class="gevonden-werkvormen">
+	<div class="gevonden-werkvormen">
 		{#if $selectedTag !== 'allTags'}
 			<!-- als er 1 werkvorm terugkomt -->
 			{#if filteredWorkforms.length === 1}
-				<p>Er is 1 gevonden werkvorm</p>
-			{:else}
+				<p>Er is 1 gevonden werkvorm in {filteredWorkforms[0].tags[0].tag_id.title}</p>
+			{:else if filteredWorkforms. length > 1}
 				<!-- wanneer er meerdere werkvormen terugkomen -->
-				<p>Er zijn {filteredWorkforms.length} gevonden werkvormen</p>
+				<p>Er zijn {filteredWorkforms.length} werkvormen gevonden in {filteredWorkforms[0].tags[0].tag_id.title}</p>
+				{:else}
+				<p></p>
 			{/if}
 		{/if}
-	</section>
+	</div>
 
 	<section class="werkvormen" id="custom-view">
 		<!-- Check if filteredWorkforms array contains more than 1 object -->

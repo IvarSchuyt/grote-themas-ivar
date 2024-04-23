@@ -20,6 +20,7 @@
         color: var(--input-color, #fff);
     }
 
+
     input::placeholder {
         color: rgba(255, 255, 255, 0.4);
         font-style: italic;

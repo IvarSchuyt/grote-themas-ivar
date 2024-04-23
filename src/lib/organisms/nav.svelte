@@ -3,12 +3,23 @@
 		import { onMount } from 'svelte';
 
 		onMount(async () => {
-			console.log(data)
+			let filterButton = document.querySelector("#filterSearchDesktop");
+			let feedButton = document.querySelector("#feed-forward-img");
 			let logoutAppear = document.querySelector(".logout-button")
 			if(data.user){
 				logoutAppear.classList.add('appear')
-
 			}
+
+			filterButton.addEventListener("click", () =>{
+				if(feedButton.classList.contains("unclicked")){
+					feedButton.src = "/images/icons/arrow-up.svg"
+					feedButton.classList.toggle("unclicked");
+				}
+				else{
+					feedButton.src = "/images/icons/arrow-down.svg"
+					feedButton.classList.toggle("unclicked");
+				}
+			})
 		return ;
 	});	
 		export let data;
@@ -19,7 +30,7 @@
 	<div class="mobile-menu">
 		<details>
 			<summary>
-				<figure>
+				<div class="figure-div">
 					<div>
 						<svg
 							width="24"
@@ -81,8 +92,8 @@
 							>
 						</svg>
 					</div>
-					<figcaption>menu</figcaption>
-				</figure>
+					<span class="caption-span">menu</span>
+				</div>
 			</summary>
 			<ul id="mobile-menu">
 				<li class="menu-item">
@@ -143,7 +154,7 @@
 								</clipPath>
 							</defs>
 						</svg>
-						upload een werkvorm
+						Voeg een werkvorm toe
 					</a>
 				</li>
 			</ul>
@@ -183,6 +194,7 @@
 					</defs>
 				</svg>
 				filteren & zoeken
+				<img src="/images/icons/arrow-down.svg" alt="down arrow" id="feed-forward-img" class="unclicked"> 
 			</button>
 		</li>
 
@@ -343,11 +355,16 @@ nav button {
     text-transform: capitalize;
 }
 
-nav figure {
+nav .figure-div {
     align-items: center;
     display: flex;
     gap: var(--unit-small);
     justify-content: center;
+}
+
+img{
+	width: 1.25em;
+	height: 1.25em;
 }
 
 /* Filter button */
@@ -394,14 +411,14 @@ li.menu-item button:hover,
 }
 
 /* Menu button */
-nav button figcaption {
+nav button .caption-span {
     font-family: 'Open sans';
     font-size: 1.25rem;
     font-weight: 500;
     transition: var(--animation-quick) ease-in-out;
 }
 
-nav button:hover figcaption {
+nav button:hover .caption-span {
     font-weight: 700;
 }
 
@@ -494,8 +511,6 @@ ul li button:focus {
 }
 
 .link-primary::before {
-    background-image: url('https://img.freepik.com/free-vector/seamless-grainy-texture-background_1409-2115.jpg');
-    background-size: 180%;
     border-radius: var(--unit-micro);
     content: '';
     height: 100%;

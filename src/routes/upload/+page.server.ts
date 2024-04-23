@@ -8,6 +8,8 @@ export const load = (async ({ locals: { user }, cookies }) => {
 	const reqCourse = await fetch('https://platform-big-themes.directus.app/items/course')
 	const reqContact = await fetch('https://platform-big-themes.directus.app/items/contact')
 	const reqTag = await fetch('https://platform-big-themes.directus.app/items/tag')
+	const reqSubtag = await fetch('https://platform-big-themes.directus.app/items/sub_tag');
+	const dataSubtag = await reqSubtag.json();
 	const dataCourse = await reqCourse.json()
 	const dataContact = await reqContact.json()
 	const dataTag = await reqTag.json()
@@ -15,6 +17,7 @@ export const load = (async ({ locals: { user }, cookies }) => {
 	const data = {
 		course: dataCourse.data,
 		contact: dataContact.data,
+		sub_tag: dataSubtag.data,
 		tag: dataTag.data
 	}
 	if (!user) {
@@ -64,17 +67,16 @@ async function uploadFile(filedata) {
 
 	return data
 }
-
 export const actions = {
 	'create-werkvorm': async ({ request }) => {
 		const formData = await request.formData()
-
 		/* ------------------------------- FILE UPLOAD ------------------------------ */
 		// Get all files from formData object
 		const werkvormThumbnail = formData.get('werkvormThumbnail')
 		const werkvormVideo = formData.get('werkvormVideo')
 		const filesToUpload = new FormData()
 		const allFiles = [werkvormThumbnail, werkvormVideo]
+		let subTest;
 
 		allFiles.forEach((file) => {
 			// If file size is 0, don't upload
@@ -96,10 +98,11 @@ export const actions = {
 		const werkvormDesc = formData.get('werkvormDesc')?.toString()
 		const werkvormOpleiding = formData.get('werkvormOpleiding')?.toString() || null
 		const werkvormContactpersoon = formData.get('werkvormContactpersoon')?.toString() || null
+		const werkvormSubtags = formData.getAll('selectTag') || null
 
 		let werkvormThumbnailDataID
 		let werkvormVideoDataID
-
+		console.log(werkvormSubtags)
 		// Check if uploadData is an array
 		if (Array.isArray(uploadData.data)) {
 			const werkvormThumbnailID = uploadData.data.filter((file) => {
@@ -114,6 +117,7 @@ export const actions = {
 		} else {
 			werkvormThumbnailDataID = uploadData.data.id
 		}
+
 
 		// Slugify werkvormName
 		const slug =
@@ -139,7 +143,8 @@ export const actions = {
 				contact: werkvormContactpersoon,
 				thumbnail: werkvormThumbnailDataID,
 				video: werkvormVideoDataID,
-				link: slug
+				link: slug,
+				sub_tags: werkvormSubtags
 			})
 		})
 			.then((response) => response.json())
