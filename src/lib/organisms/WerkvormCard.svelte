@@ -72,6 +72,7 @@
         min-width: 20rem;
 		max-width: 20rem;
 		padding: 0.8rem;
+		height: 25rem;
 	}
 
 	article > div > img {
@@ -97,6 +98,9 @@
 		font-size: 1.4rem;
 		font-weight: 700;
 		margin-bottom: var(--unit-small);
+		white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
 	}
 
 	p {
