@@ -171,6 +171,7 @@ function toggleValidator() {
       selectPlaceholder="Selecteer een opleiding..."
       options={data.course}
       isRequired={true}
+      inputHint="Kies een opleiding door op de dropdown te klikken."
     />
 
     <!-- Contactpersoon -->
@@ -183,6 +184,7 @@ function toggleValidator() {
       selectPlaceholder="Selecteer een contactpersoon..."
       options={contactpersoonObj}
       isRequired={true}
+      inputHint="Kies een contactpersoon door op de dropdown te klikken."
     />
 
     <!-- Thumbnail -->
