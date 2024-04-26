@@ -28,7 +28,7 @@
     };
   });
 
-  // Convert email field to titel field
+  // Convert email field to title field
   const contactpersoonObj = data.contact.map(({ email: title, ...rest }) => ({
     ...rest,
     title,
@@ -226,17 +226,6 @@ function toggleValidator() {
         isRequired={false}
         {data}
       />
-
-    <!-- <SelectFormField
-    iconSrc="/images/icons/school.svg"
-    labelFor="tagSelect"
-    labelText="Tags"
-    selectName="tagSelect"
-    selectId="tagSelect"
-    selectPlaceholder="Selecteer relevante tags..."
-    options={data.sub_tag}
-    isRequired={true}
-  /> -->
   </div>
 
   <Button btnType="submit" {btnText} on:click= {toggleValidator}></Button>
