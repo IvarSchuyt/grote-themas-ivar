@@ -259,7 +259,7 @@
     	right: 0;
     	margin-left: auto;
     	margin-right: auto;
-    	/* width: 13em; */
+    	width: max-content;
 		padding: 10px;
 		z-index: 3;
 		box-shadow: 8px 8px #1e1649;
@@ -270,16 +270,14 @@
 		visibility: hidden;
 	}
 	.sub-select > label > span{
-		border: 1px solid var(--text-color);
+		border: 2px solid var(--text-color);
 		font-family: 'Open Sans', sans-serif;
+		padding: 0.2rem var(--unit-small);
 	}
 
 	.sub-select > label{
 		padding: 5px 0px 5px 0px;
 		margin: 5px 0px 5px 0px;
-	}
-	.sub-select > label > span{
-		padding: 5px 2px 5px 2px;
 	}
 
 	@media (max-width: 75rem) {
@@ -290,6 +288,10 @@
 		
 		ul button{
 			width: 100%;
+		}
+
+		.sub-select{
+			width: auto;
 		}
 	}
 </style>
