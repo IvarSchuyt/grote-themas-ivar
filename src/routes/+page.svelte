@@ -110,6 +110,7 @@
 		gap: var(--unit-large);
 		margin: var(--unit-large) auto 0;
     	padding-bottom: 5rem;
+		justify-content: center;
 	}
 
 	#custom-view {
@@ -119,7 +120,6 @@
 	@media (max-width: 18rem) {
 		.werkvormen {
 			width: 16rem;
-			justify-content: center;
 		}
 	}
 
@@ -146,7 +146,6 @@
 	@media (min-width: 170rem){
 		.werkvormen{
 			width: 90vw;
-			justify-content: center;
 			height: 50vh;
 		}
 	}
